@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تولدت مبارک عمو هادی ❤️</title>
+  <!-- فونت زیبا و مدرن -->
+  <link href="https://fonts.googleapis.com/css2?family=Vazir+Matn:wght@300;700;900&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Vazir Matn', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 30% 10%, #0b0e1a, #020308);
+      overflow: hidden;
+      padding: 20px;
+      position: relative;
+    }
+
+    /* پس‌زمینهٔ ذرات درخشان (ستاره‌های متحرک) */
+    #particles-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .card {
+      position: relative;
+      z-index: 10;
+      max-width: 800px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 70px 20px 70px 20px;
+      padding: 40px 30px 50px;
+      box-shadow: 0 40px 70px rgba(0, 0, 0, 0.7), 0 0 0 2px rgba(255, 215, 0, 0.2), 0 0 40px rgba(255, 200, 50, 0.3);
+      border: 1px solid rgba(255, 215, 0, 0.25);
+      text-align: center;
+      transition: transform 0.4s ease;
+      animation: float-card 5s ease-in-out infinite;
+    }
+
+    @keyframes float-card {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .card:hover {
+      transform: scale(1.01) translateY(-6px);
+      box-shadow: 0 50px 90px rgba(0, 0, 0, 0.9), 0 0 0 3px rgba(255, 215, 0, 0.5), 0 0 70px #ffb347;
+    }
+
+    /* هاله‌ی طلایی دور کادر */
+    .card::before {
+      content: '';
+      position: absolute;
+      top: -3px;
+      left: -3px;
+      right: -3px;
+      bottom: -3px;
+      border-radius: 72px 22px 72px 22px;
+      background: linear-gradient(135deg, #f9d976, #f39c12, #f1c40f, #e67e22);
+      background-size: 400% 400%;
+      z-index: -1;
+      animation: gold-border 6s ease infinite;
+      filter: blur(6px);
+      opacity: 0.7;
+    }
+
+    @keyframes gold-border {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* عنوان تبریک با انیمیشن چشمک‌زن */
+    .greeting {
+      font-size: 3.2rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #ffd700, #ffb347, #ff8c00, #ffd700);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: shimmer 4s ease-in-out infinite;
+      text-shadow: 0 0 30px rgba(255, 200, 0, 0.3);
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .name {
+      font-size: 4.8rem;
+      font-weight: 900;
+      color: #fff;
+      text-shadow: 0 0 20px #f1c40f, 0 0 40px #e67e22, 0 0 80px #f39c12;
+      letter-spacing: 8px;
+      margin: 10px 0 5px;
+      animation: pulse-glow 2.2s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulse-glow {
+      0% { text-shadow: 0 0 10px #f1c40f, 0 0 30px #e67e22, 0 0 60px #f39c12; opacity: 1; }
+      100% { text-shadow: 0 0 30px #ffd700, 0 0 70px #ff8c00, 0 0 120px #ffa500; opacity: 1; }
+    }
+
+    .age-badge {
+      display: inline-block;
+      background: rgba(255, 215, 0, 0.15);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 215, 0, 0.5);
+      padding: 8px 30px;
+      border-radius: 60px;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #ffeaa7;
+      letter-spacing: 2px;
+      box-shadow: 0 0 30px rgba(255, 200, 0, 0.2);
+      margin: 15px 0 20px;
+    }
+
+    .message {
+      font-size: 1.3rem;
+      line-height: 2.2rem;
+      color: #f0e6d3;
+      font-weight: 300;
+      background: rgba(0, 0, 0, 0.25);
+      padding: 18px 20px;
+      border-radius: 50px 10px 50px 10px;
+      border-right: 4px solid #f1c40f;
+      border-left: 4px solid #f39c12;
+      margin: 20px 0 30px;
+      backdrop-filter: blur(4px);
+      box-shadow: inset 0 0 30px rgba(255, 215, 0, 0.05);
+    }
+
+    .message span {
+      color: #ffd700;
+      font-weight: 700;
+    }
+
+    .emoji-row {
+      font-size: 3.2rem;
+      letter-spacing: 15px;
+      margin: 15px 0 25px;
+      animation: bounce-emoji 2s ease-in-out infinite;
+    }
+
+    @keyframes bounce-emoji {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      50% { transform: scale(1.2) rotate(5deg); }
+    }
+
+    .btn-gift {
+      display: inline-block;
+      padding: 16px 50px;
+      background: linear-gradient(145deg, #f1c40f, #e67e22);
+      border: none;
+      border-radius: 60px;
+      color: #0b0e1a;
+      font-size: 1.5rem;
+      font-weight: 900;
+      font-family: 'Vazir Matn', sans-serif;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(241, 196, 15, 0.4);
+      transition: all 0.3s ease;
+      letter-spacing: 2px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      text-decoration: none;
+      margin-top: 10px;
+    }
+
+    .btn-gift:hover {
+      transform: scale(1.07);
+      box-shadow: 0 20px 50px #f39c12, 0 0 80px #f1c40f;
+      background: linear-gradient(145deg, #ffe066, #f39c12);
+      color: #000;
+    }
+
+    .btn-gift:active {
+      transform: scale(0.96);
+    }
+
+    /* کانفتی‌های جشن (با جاوااسکریپت) */
+    .confetti-piece {
+      position: fixed;
+      width: 12px;
+      height: 12px;
+      opacity: 0.9;
+      z-index: 9999;
+      pointer-events: none;
+      animation: confetti-fall linear forwards;
+    }
+
+    @keyframes confetti-fall {
+      0% {
+        transform: translateY(-10vh) rotate(0deg) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(720deg) scale(0.3);
+        opacity: 0.2;
+      }
+    }
+
+    /* موبایل و تبلت */
+    @media (max-width: 640px) {
+      .card {
+        padding: 30px 16px 40px;
+        border-radius: 50px 10px 50px 10px;
+      }
+      .greeting { font-size: 2.2rem; }
+      .name { font-size: 3.2rem; letter-spacing: 4px; }
+      .message { font-size: 1.1rem; padding: 14px; }
+      .btn-gift { font-size: 1.2rem; padding: 14px 30px; }
+      .emoji-row { font-size: 2.5rem; }
+    }
+
+    /* پا نوشت کوچک و شیک */
+    .footer-note {
+      margin-top: 30px;
+      color: rgba(255, 215, 0, 0.3);
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      border-top: 1px solid rgba(255, 215, 0, 0.1);
+      padding-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- پرده‌ی ذرات (ستاره‌های پویا) -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- کارت اصلی تولد -->
+  <div class="card">
+    <div class="greeting">🎂 تولدت مبارک 🎂</div>
+    <div class="name">عمو هادی</div>
+    <div class="age-badge">✨ امروز روز خاص توست ✨</div>
+
+    <div class="emoji-row">🎁 🥳 🎈 🎉 🎊</div>
+
+    <div class="message">
+      <span>❤️ عمو هادی عزیز ❤️</span><br />
+      بهترین‌ها را برایت آرزو میکنم. <br />
+      روزت پر از <span>شادی، عشق و موفقیت</span> 🌟
+    </div>
+
+    <!-- دکمه‌ی هدیه با افکت کانفتی -->
+    <button class="btn-gift" id="fireConfetti">🎁 هدیه‌ی مخصوص 🎁</button>
+
+    <div class="footer-note">
+      ★ با عشق از طرف خانواده ★
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      // ---------- ذرات پس‌زمینه (ستاره‌های متحرک) ----------
+      const canvas = document.getElementById('particles-canvas');
+      const ctx = canvas.getContext('2d');
+      let width, height;
+      let particles = [];
+
+      function resizeCanvas() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resizeCanvas);
+      resizeCanvas();
+
+      class Particle {
+        constructor() {
+          this.reset();
+        }
+        reset() {
+          this.x = Math.random() * width;
+          this.y = Math.random() * height;
+          this.size = Math.random() * 2.6 + 0.8;
+          this.speedX = (Math.random() - 0.5) * 0.3;
+          this.speedY = (Math.random() - 0.5) * 0.3;
+          this.opacity = Math.random() * 0.7 + 0.3;
+          this.color = `hsla(${40 + Math.random() * 30}, 90%, 70%, ${this.opacity})`;
+        }
+        update() {
+          this.x += this.speedX;
+          this.y += this.speedY;
+          if (this.x < 0 || this.x > width) this.speedX *= -1;
+          if (this.y < 0 || this.y > height) this.speedY *= -1;
+        }
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fillStyle = this.color;
+          ctx.shadowColor = '#ffd700';
+          ctx.shadowBlur = 12;
+          ctx.fill();
+        }
+      }
+
+      // ایجاد ۱۰۰ ذره
+      for (let i = 0; i < 120; i++) {
+        particles.push(new Particle());
+      }
+
+      function animateParticles() {
+        ctx.clearRect(0, 0, width, height);
+        particles.forEach(p => {
+          p.update();
+          p.draw();
+        });
+        requestAnimationFrame(animateParticles);
+      }
+      animateParticles();
+
+      // ---------- کانفتی‌های جشن (با کلیک دکمه) ----------
+      const btn = document.getElementById('fireConfetti');
+
+      function createConfetti(count = 80) {
+        const colors = ['#ffd700', '#ff6b6b', '#4ecdc4', '#ffe66d', '#ff9ff3', '#f368e0', '#ff9f43', '#00d2d3', '#1dd1a1', '#feca57'];
+        for (let i = 0; i < count; i++) {
+          const el = document.createElement('div');
+          el.className = 'confetti-piece';
+          const size = Math.floor(Math.random() * 16) + 8;
+          const color = colors[Math.floor(Math.random() * colors.length)];
+          const left = Math.random() * 100;
+          const duration = (Math.random() * 2 + 2.2);
+          const delay = Math.random() * 0.8;
+          const rotate = Math.random() * 360;
+
+          el.style.width = size + 'px';
+          el.style.height = size * 0.6 + 'px';
+          el.style.background = color;
+          el.style.left = left + '%';
+          el.style.top = '-10px';
+          el.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+          el.style.animationDuration = duration + 's';
+          el.style.animationDelay = delay + 's';
+          el.style.transform = `rotate(${rotate}deg)`;
+          el.style.boxShadow = `0 0 12px ${color}`;
+
+          document.body.appendChild(el);
+          // حذف بعد از اتمام انیمیشن
+          setTimeout(() => {
+            if (el.parentNode) el.remove();
+          }, (duration + delay) * 1000 + 200);
+        }
+      }
+
+      btn.addEventListener('click', function(e) {
+        // انیمیشن دکمه
+        this.style.transform = 'scale(0.9)';
+        setTimeout(() => { this.style.transform = ''; }, 150);
+
+        // پرتاب کانفتی
+        createConfetti(120);
+        // اضافه کردن یه موج کانفتی دیگه بعد از نیم ثانیه
+        setTimeout(() => createConfetti(60), 300);
+        setTimeout(() => createConfetti(40), 700);
+
+        // نمایش پیام پنهان (اختیاری)
+        const msg = document.querySelector('.message');
+        msg.style.transition = 'all 0.2s';
+        msg.style.borderColor = '#ffd700';
+        msg.style.boxShadow = '0 0 50px rgba(255,215,0,0.6)';
+        setTimeout(() => {
+          msg.style.borderColor = '#f39c12';
+          msg.style.boxShadow = 'inset 0 0 30px rgba(255,215,0,0.05)';
+        }, 800);
+      });
+
+      // همچنین با لود صفحه، یه کانفتی ملایم به استقبال
+      window.addEventListener('load', function() {
+        setTimeout(() => createConfetti(40), 500);
+        setTimeout(() => createConfetti(30), 1200);
+      });
+
+    })();
+  </script>
+</body>
+</html>
