@@ -6,7 +6,6 @@
   <title>🎂 تولدت مبارک عمو هادی!</title>
   <link href="https://fonts.googleapis.com/css2?family=Vazir+Matn:wght@300;700;900&display=swap" rel="stylesheet" />
   <style>
-    /* ===== RESET & BASE ===== */
     * {
       margin: 0;
       padding: 0;
@@ -21,218 +20,209 @@
       justify-content: center;
       background: #0a0a12;
       overflow: hidden;
-      position: relative;
       cursor: default;
+      margin: 0;
     }
 
-    /* ===== BACKGROUND: گرادیان متحرک با جلوه‌ی عمق ===== */
+    /* ===== پس‌زمینه ساده ===== */
     .bg-layer {
       position: fixed;
       inset: 0;
       z-index: 0;
       background:
-        radial-gradient(ellipse at 20% 50%, rgba(180, 90, 30, 0.25) 0%, transparent 60%),
-        radial-gradient(ellipse at 80% 20%, rgba(200, 150, 50, 0.2) 0%, transparent 50%),
-        radial-gradient(ellipse at 50% 80%, rgba(100, 50, 150, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 20% 50%, rgba(180, 90, 30, 0.2) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(200, 150, 50, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 80%, rgba(100, 50, 150, 0.1) 0%, transparent 50%),
         #0a0a12;
       animation: bgShift 20s ease-in-out infinite alternate;
+      will-change: transform;
     }
     @keyframes bgShift {
       0% { transform: scale(1) rotate(0deg); }
-      100% { transform: scale(1.15) rotate(3deg); }
+      100% { transform: scale(1.08) rotate(2deg); }
     }
 
-    /* ===== CANVAS برای ذرات سه‌بعدی ===== */
+    /* ===== کانواس ذرات (بهینه شده) ===== */
     #particles-canvas {
       position: fixed;
       inset: 0;
       z-index: 1;
       pointer-events: none;
+      will-change: transform;
     }
 
-    /* ===== کارت اصلی با افکت شیشه‌ای و هاله‌ی طلایی ===== */
+    /* ===== کارت اصلی (بهینه) ===== */
     .card {
       position: relative;
       z-index: 10;
-      max-width: 820px;
+      max-width: 780px;
       width: 100%;
       margin: 20px;
-      background: rgba(255, 255, 255, 0.035);
-      backdrop-filter: blur(24px) saturate(1.4);
-      -webkit-backdrop-filter: blur(24px) saturate(1.4);
-      border-radius: 90px 20px 90px 20px;
-      padding: 48px 36px 56px;
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(20px) saturate(1.2);
+      -webkit-backdrop-filter: blur(20px) saturate(1.2);
+      border-radius: 80px 16px 80px 16px;
+      padding: 40px 30px 48px;
       box-shadow:
-        0 60px 120px rgba(0, 0, 0, 0.8),
-        0 0 0 1px rgba(255, 215, 0, 0.15),
-        inset 0 0 80px rgba(255, 215, 0, 0.03);
-      border: 1px solid rgba(255, 215, 0, 0.12);
+        0 40px 80px rgba(0, 0, 0, 0.7),
+        0 0 0 1px rgba(255, 215, 0, 0.12),
+        inset 0 0 60px rgba(255, 215, 0, 0.02);
+      border: 1px solid rgba(255, 215, 0, 0.1);
       text-align: center;
-      transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.6s ease;
+      transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.5s ease;
       animation: cardFloat 7s ease-in-out infinite;
+      will-change: transform;
+      contain: layout style paint;
     }
     @keyframes cardFloat {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-18px) rotate(0.6deg); }
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
     }
     .card:hover {
-      transform: translateY(-10px) scale(1.012);
+      transform: translateY(-6px) scale(1.008);
       box-shadow:
-        0 80px 160px rgba(0, 0, 0, 0.9),
-        0 0 0 2px rgba(255, 215, 0, 0.35),
-        0 0 70px rgba(255, 200, 50, 0.15);
+        0 60px 120px rgba(0, 0, 0, 0.8),
+        0 0 0 2px rgba(255, 215, 0, 0.3);
     }
 
-    /* هاله‌ی طلایی براق */
+    /* هاله‌ی طلایی (ساده‌تر) */
     .card::before {
       content: '';
       position: absolute;
-      inset: -4px;
-      border-radius: 92px 22px 92px 22px;
-      background: linear-gradient(135deg, #f9d976, #f39c12, #f1c40f, #e67e22, #f9d976);
-      background-size: 400% 400%;
+      inset: -3px;
+      border-radius: 82px 18px 82px 18px;
+      background: linear-gradient(135deg, #f9d976, #f39c12, #f1c40f, #e67e22);
+      background-size: 300% 300%;
       z-index: -1;
-      filter: blur(18px);
-      opacity: 0.5;
+      filter: blur(16px);
+      opacity: 0.4;
       animation: goldPulse 8s ease-in-out infinite;
+      will-change: transform, opacity;
     }
     @keyframes goldPulse {
-      0% { background-position: 0% 50%; opacity: 0.4; transform: scale(0.98); }
-      50% { background-position: 100% 50%; opacity: 0.8; transform: scale(1.04); }
-      100% { background-position: 0% 50%; opacity: 0.4; transform: scale(0.98); }
+      0% { background-position: 0% 50%; opacity: 0.3; }
+      50% { background-position: 100% 50%; opacity: 0.6; }
+      100% { background-position: 0% 50%; opacity: 0.3; }
     }
 
-    /* ===== عنوان تبریک ===== */
+    /* ===== عنوان ===== */
     .greeting {
-      font-size: 2.8rem;
+      font-size: 2.6rem;
       font-weight: 900;
-      background: linear-gradient(135deg, #ffe680, #ffb347, #ff8c00, #ffe680);
-      background-size: 300% 300%;
+      background: linear-gradient(135deg, #ffe680, #ffb347, #ff8c00);
+      background-size: 200% 200%;
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
       animation: shimmerGold 5s ease-in-out infinite;
-      text-shadow: 0 0 50px rgba(255, 200, 0, 0.2);
-      letter-spacing: 4px;
+      letter-spacing: 3px;
       margin-bottom: 4px;
+      will-change: background-position;
     }
     @keyframes shimmerGold {
-      0% { background-position: 0% 50%; }
+      0%, 100% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
     }
 
-    /* ===== اسم عمو هادی با افکت نئون موج‌دار ===== */
+    /* ===== اسم ===== */
     .name-wrapper {
       position: relative;
       display: inline-block;
-      margin: 6px 0 2px;
+      margin: 4px 0 2px;
     }
     .name {
-      font-size: 5.4rem;
+      font-size: 5rem;
       font-weight: 900;
       color: #fff;
-      letter-spacing: 14px;
-      text-shadow:
-        0 0 20px rgba(241, 196, 15, 0.6),
-        0 0 50px rgba(230, 126, 34, 0.5),
-        0 0 90px rgba(243, 156, 18, 0.4),
-        0 0 140px rgba(241, 196, 15, 0.2);
+      letter-spacing: 12px;
+      text-shadow: 0 0 20px rgba(241, 196, 15, 0.4), 0 0 50px rgba(230, 126, 34, 0.3);
       animation: neonWave 3.2s ease-in-out infinite alternate;
-      position: relative;
-      z-index: 2;
+      will-change: transform, text-shadow;
     }
     @keyframes neonWave {
-      0% {
-        text-shadow: 0 0 15px #f1c40f, 0 0 40px #e67e22, 0 0 70px #f39c12, 0 0 100px #f1c40f;
-        transform: scale(1);
-      }
-      100% {
-        text-shadow: 0 0 35px #ffd700, 0 0 80px #ff8c00, 0 0 130px #ffa500, 0 0 180px #ffd700;
-        transform: scale(1.04);
-      }
+      0% { text-shadow: 0 0 15px #f1c40f, 0 0 40px #e67e22, 0 0 70px #f39c12; transform: scale(1); }
+      100% { text-shadow: 0 0 30px #ffd700, 0 0 70px #ff8c00, 0 0 110px #ffa500; transform: scale(1.02); }
     }
-    /* زیرخط طلایی زیر اسم */
     .name-underline {
-      width: 70%;
-      height: 4px;
-      margin: 8px auto 0;
-      background: linear-gradient(90deg, transparent, #f1c40f, #e67e22, #f1c40f, transparent);
+      width: 60%;
+      height: 3px;
+      margin: 6px auto 0;
+      background: linear-gradient(90deg, transparent, #f1c40f, #e67e22, transparent);
       border-radius: 10px;
       animation: underlinePulse 2.4s ease-in-out infinite;
+      will-change: transform, opacity;
     }
     @keyframes underlinePulse {
       0%, 100% { transform: scaleX(0.8); opacity: 0.5; }
-      50% { transform: scaleX(1.2); opacity: 1; }
+      50% { transform: scaleX(1.1); opacity: 1; }
     }
 
-    /* ===== برچسب سن ===== */
+    /* ===== برچسب ===== */
     .age-badge {
       display: inline-block;
-      background: rgba(255, 215, 0, 0.10);
-      backdrop-filter: blur(6px);
-      border: 1px solid rgba(255, 215, 0, 0.3);
-      padding: 6px 32px;
+      background: rgba(255, 215, 0, 0.08);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 215, 0, 0.25);
+      padding: 4px 28px;
       border-radius: 60px;
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 700;
       color: #ffeaa7;
-      letter-spacing: 3px;
-      box-shadow: 0 0 30px rgba(255, 200, 0, 0.08);
-      margin: 10px 0 16px;
+      letter-spacing: 2px;
+      margin: 8px 0 14px;
     }
 
-    /* ===== ایموجی‌های رقصان ===== */
+    /* ===== ایموجی‌ها ===== */
     .emoji-row {
-      font-size: 3.8rem;
-      letter-spacing: 20px;
-      margin: 8px 0 18px;
+      font-size: 3.4rem;
+      letter-spacing: 16px;
+      margin: 6px 0 14px;
       animation: emojiDance 2.6s ease-in-out infinite;
-      filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.2));
+      will-change: transform;
     }
     @keyframes emojiDance {
-      0%, 100% { transform: rotate(-4deg) scale(1); }
-      50% { transform: rotate(4deg) scale(1.18); }
+      0%, 100% { transform: rotate(-3deg) scale(1); }
+      50% { transform: rotate(3deg) scale(1.12); }
     }
 
-    /* ===== پیام با تایپ‌رایتر ===== */
+    /* ===== پیام ===== */
     .message-box {
-      min-height: 100px;
+      min-height: 90px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 10px 0 22px;
+      margin: 8px 0 18px;
     }
     .message {
-      font-size: 1.35rem;
-      line-height: 2.3rem;
+      font-size: 1.3rem;
+      line-height: 2.2rem;
       color: #f0e6d3;
       font-weight: 300;
-      background: rgba(0, 0, 0, 0.35);
-      padding: 20px 28px;
-      border-radius: 60px 12px 60px 12px;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 18px 24px;
+      border-radius: 50px 10px 50px 10px;
       border-right: 4px solid #f1c40f;
       border-left: 4px solid #f39c12;
-      backdrop-filter: blur(6px);
-      box-shadow: inset 0 0 50px rgba(255, 215, 0, 0.03);
+      backdrop-filter: blur(4px);
       width: 100%;
       text-align: center;
-      min-height: 80px;
+      min-height: 70px;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      transition: box-shadow 0.4s, border-color 0.4s;
     }
     .message .hl {
       color: #ffd700;
       font-weight: 700;
-      text-shadow: 0 0 25px rgba(255, 215, 0, 0.25);
+      text-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
     }
     .cursor-blink {
       display: inline-block;
-      width: 4px;
-      height: 1.8rem;
+      width: 3px;
+      height: 1.6rem;
       background: #ffd700;
-      margin-right: 4px;
+      margin-right: 3px;
       vertical-align: middle;
       animation: blink 0.9s step-end infinite;
       border-radius: 2px;
@@ -242,77 +232,55 @@
       50% { opacity: 0; }
     }
 
-    /* ===== دکمه هدیه با افکت موج و انفجار ===== */
+    /* ===== دکمه ===== */
     .btn-gift {
       position: relative;
       display: inline-block;
-      padding: 20px 60px;
+      padding: 18px 54px;
       background: linear-gradient(145deg, #f1c40f, #e67e22);
       border: none;
-      border-radius: 70px;
+      border-radius: 60px;
       color: #0b0e1a;
-      font-size: 1.7rem;
+      font-size: 1.6rem;
       font-weight: 900;
       font-family: 'Vazir Matn', sans-serif;
       cursor: pointer;
-      box-shadow: 0 15px 40px rgba(241, 196, 15, 0.4);
+      box-shadow: 0 12px 35px rgba(241, 196, 15, 0.35);
       transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-      letter-spacing: 3px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      margin-top: 8px;
+      letter-spacing: 2px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      margin-top: 6px;
       overflow: hidden;
       user-select: none;
-    }
-    .btn-gift::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, 0.4) 0%, transparent 70%);
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      pointer-events: none;
-    }
-    .btn-gift:hover::before {
-      opacity: 1;
+      will-change: transform, box-shadow;
     }
     .btn-gift:hover {
-      transform: scale(1.09) translateY(-3px);
-      box-shadow: 0 25px 70px #f39c12, 0 0 100px #f1c40f;
+      transform: scale(1.06) translateY(-2px);
+      box-shadow: 0 20px 60px #f39c12, 0 0 80px #f1c40f;
       background: linear-gradient(145deg, #ffe066, #f39c12);
       color: #000;
     }
     .btn-gift:active {
-      transform: scale(0.93);
-    }
-    /* موج دایره‌ای هنگام کلیک */
-    .ripple-effect {
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.5);
-      transform: scale(0);
-      animation: rippleAnim 0.8s ease-out forwards;
-      pointer-events: none;
-    }
-    @keyframes rippleAnim {
-      to { transform: scale(4); opacity: 0; }
+      transform: scale(0.94);
     }
 
     /* ===== پانوشت ===== */
     .footer-note {
-      margin-top: 32px;
-      color: rgba(255, 215, 0, 0.2);
-      font-size: 0.85rem;
-      letter-spacing: 4px;
-      border-top: 1px solid rgba(255, 215, 0, 0.06);
-      padding-top: 24px;
+      margin-top: 28px;
+      color: rgba(255, 215, 0, 0.18);
+      font-size: 0.8rem;
+      letter-spacing: 3px;
+      border-top: 1px solid rgba(255, 215, 0, 0.05);
+      padding-top: 20px;
     }
 
-    /* ===== کانفتی‌ها (جاوااسکریپت) ===== */
+    /* ===== کانفتی ===== */
     .confetti-piece {
       position: fixed;
       pointer-events: none;
       z-index: 9999;
       animation: confettiFall linear forwards;
+      will-change: transform, opacity;
     }
     @keyframes confettiFall {
       0% {
@@ -327,61 +295,54 @@
 
     /* ===== ریسپانسیو ===== */
     @media (max-width: 640px) {
-      .card { padding: 30px 16px 40px; border-radius: 50px 10px 50px 10px; margin: 12px; }
+      .card { padding: 28px 14px 36px; border-radius: 50px 10px 50px 10px; margin: 12px; }
       .greeting { font-size: 2rem; }
-      .name { font-size: 3.4rem; letter-spacing: 6px; }
-      .message { font-size: 1.05rem; padding: 14px; line-height: 2rem; }
-      .btn-gift { font-size: 1.3rem; padding: 16px 32px; }
-      .emoji-row { font-size: 2.8rem; letter-spacing: 14px; }
-      .age-badge { font-size: 1rem; padding: 4px 20px; }
+      .name { font-size: 3.2rem; letter-spacing: 6px; }
+      .message { font-size: 1rem; padding: 12px; line-height: 1.8rem; }
+      .btn-gift { font-size: 1.2rem; padding: 14px 28px; }
+      .emoji-row { font-size: 2.6rem; letter-spacing: 12px; }
+      .age-badge { font-size: 0.95rem; padding: 4px 16px; }
       .footer-note { font-size: 0.7rem; }
-      .name-underline { width: 50%; }
     }
     @media (max-width: 400px) {
-      .name { font-size: 2.6rem; letter-spacing: 4px; }
+      .name { font-size: 2.4rem; letter-spacing: 4px; }
       .greeting { font-size: 1.6rem; }
-      .btn-gift { font-size: 1.1rem; padding: 14px 24px; }
+      .btn-gift { font-size: 1rem; padding: 12px 20px; }
     }
 
-    /* ===== پیش‌بارگذاری ===== */
-    .loading-fade {
-      animation: fadeInUp 1.4s ease forwards;
+    /* ===== fade-in اولیه ===== */
+    .fade-in {
+      animation: fadeUp 0.9s ease forwards;
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(24px);
     }
-    @keyframes fadeInUp {
+    @keyframes fadeUp {
       to { opacity: 1; transform: translateY(0); }
     }
-    .delay-1 { animation-delay: 0.1s; }
-    .delay-2 { animation-delay: 0.3s; }
-    .delay-3 { animation-delay: 0.6s; }
-    .delay-4 { animation-delay: 0.9s; }
-    .delay-5 { animation-delay: 1.2s; }
+    .d1 { animation-delay: 0.1s; }
+    .d2 { animation-delay: 0.25s; }
+    .d3 { animation-delay: 0.45s; }
+    .d4 { animation-delay: 0.65s; }
+    .d5 { animation-delay: 0.85s; }
   </style>
 </head>
 <body>
 
-  <!-- ===== لایه‌ی پس‌زمینه ===== -->
   <div class="bg-layer"></div>
-
-  <!-- ===== کانواس ذرات ===== -->
   <canvas id="particles-canvas"></canvas>
 
-  <!-- ===== کارت اصلی ===== -->
-  <div class="card loading-fade delay-1">
+  <div class="card fade-in d1">
+    <div class="greeting fade-in d2">🎂 تولدت مبارک 🎂</div>
 
-    <div class="greeting loading-fade delay-2">🎂 تولدت مبارک 🎂</div>
-
-    <div class="name-wrapper loading-fade delay-3">
+    <div class="name-wrapper fade-in d3">
       <div class="name">عمو هادی</div>
       <div class="name-underline"></div>
     </div>
 
-    <div class="age-badge loading-fade delay-3">✨ امروز روز خاص توست ✨</div>
+    <div class="age-badge fade-in d3">✨ امروز روز خاص توست ✨</div>
+    <div class="emoji-row fade-in d3">🎁 🥳 🎈 🎉 🎊</div>
 
-    <div class="emoji-row loading-fade delay-3">🎁 🥳 🎈 🎉 🎊</div>
-
-    <div class="message-box loading-fade delay-4">
+    <div class="message-box fade-in d4">
       <div class="message" id="typewriterMessage">
         <span class="hl">❤️ عمو هادی عزیز ❤️</span><br />
         بهترین‌ها را برایت آرزو میکنم.<br />
@@ -390,10 +351,8 @@
       </div>
     </div>
 
-    <button class="btn-gift loading-fade delay-5" id="fireConfettiBtn">🎁 هدیه‌ی مخصوص 🎁</button>
-
-    <div class="footer-note loading-fade delay-5">★ با عشق از طرف خانواده ★</div>
-
+    <button class="btn-gift fade-in d5" id="fireConfettiBtn">🎁 هدیه‌ی مخصوص 🎁</button>
+    <div class="footer-note fade-in d5">★ با عشق از طرف خانواده ★</div>
   </div>
 
   <script>
@@ -401,213 +360,157 @@
       'use strict';
 
       // ============================================================
-      // 1. ذرات پس‌زمینه (ستاره‌های سه‌بعدی با عمق)
+      // 1. ذرات پس‌زمینه (بهینه، تعداد کمتر)
       // ============================================================
       const canvas = document.getElementById('particles-canvas');
       const ctx = canvas.getContext('2d');
       let W, H;
       let particles = [];
 
-      function resizeCanvas() {
+      function resize() {
         W = canvas.width = window.innerWidth;
         H = canvas.height = window.innerHeight;
       }
-      window.addEventListener('resize', resizeCanvas);
-      resizeCanvas();
+      window.addEventListener('resize', resize);
+      resize();
 
-      class StarParticle {
+      class Particle {
         constructor() { this.reset(); }
         reset() {
           this.x = Math.random() * W;
           this.y = Math.random() * H;
-          this.z = Math.random() * 100 + 20; // عمق
-          this.r = Math.random() * 2.4 + 0.6;
-          this.dx = (Math.random() - 0.5) * 0.2;
-          this.dy = (Math.random() - 0.5) * 0.2;
-          this.dz = (Math.random() - 0.5) * 0.15;
-          this.alpha = Math.random() * 0.5 + 0.3;
-          this.hue = 38 + Math.random() * 30;
-          this.sat = 80 + Math.random() * 20;
+          this.r = Math.random() * 2 + 0.8;
+          this.dx = (Math.random() - 0.5) * 0.15;
+          this.dy = (Math.random() - 0.5) * 0.15;
+          this.alpha = Math.random() * 0.4 + 0.2;
+          this.hue = 38 + Math.random() * 25;
         }
         update() {
           this.x += this.dx;
           this.y += this.dy;
-          this.z += this.dz;
           if (this.x < 0 || this.x > W) this.dx *= -1;
           if (this.y < 0 || this.y > H) this.dy *= -1;
-          if (this.z < 10 || this.z > 120) this.dz *= -1;
-          // اندازه با عمق تغییر می‌کند
-          this.scale = 1 + (this.z - 20) / 100;
         }
         draw() {
-          const r = this.r * this.scale;
-          const alpha = this.alpha * (0.6 + 0.4 * (this.z / 120));
           ctx.beginPath();
-          ctx.arc(this.x, this.y, r, 0, Math.PI * 2);
-          ctx.fillStyle = `hsla(${this.hue}, ${this.sat}%, 70%, ${alpha})`;
+          ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+          ctx.fillStyle = `hsla(${this.hue}, 80%, 70%, ${this.alpha})`;
           ctx.shadowColor = '#ffd700';
-          ctx.shadowBlur = 18;
+          ctx.shadowBlur = 10;
           ctx.fill();
         }
       }
 
-      for (let i = 0; i < 160; i++) particles.push(new StarParticle());
+      // کاهش تعداد ذرات برای روان‌تر شدن
+      for (let i = 0; i < 90; i++) particles.push(new Particle());
 
       function animateParticles() {
         ctx.clearRect(0, 0, W, H);
-        particles.forEach(p => { p.update(); p.draw(); });
+        for (let p of particles) {
+          p.update();
+          p.draw();
+        }
         requestAnimationFrame(animateParticles);
       }
       animateParticles();
 
       // ============================================================
-      // 2. کانفتی‌های سه‌بعدی با اشکال متنوع
+      // 2. کانفتی (تعداد کمتر و سبک‌تر)
       // ============================================================
-      function createConfetti(count = 130) {
-        const colors = [
-          '#ffd700', '#ff6b6b', '#4ecdc4', '#ffe66d', '#ff9ff3',
-          '#f368e0', '#ff9f43', '#00d2d3', '#1dd1a1', '#feca57',
-          '#a29bfe', '#fd79a8', '#fdcb6e', '#e17055', '#00b894',
-          '#6c5ce7', '#fd79a8', '#fdcb6e'
-        ];
-        const shapes = ['circle', 'rect', 'star'];
-
+      function createConfetti(count = 70) {
+        const colors = ['#ffd700', '#ff6b6b', '#4ecdc4', '#ffe66d', '#ff9ff3', '#f368e0', '#ff9f43', '#00d2d3', '#1dd1a1', '#feca57', '#a29bfe', '#fd79a8'];
         for (let i = 0; i < count; i++) {
           const el = document.createElement('div');
           el.className = 'confetti-piece';
           const color = colors[Math.floor(Math.random() * colors.length)];
-          const size = Math.random() * 18 + 8;
+          const size = Math.random() * 12 + 6;
           const left = Math.random() * 100;
-          const duration = Math.random() * 2.5 + 2.8;
-          const delay = Math.random() * 1.2;
+          const duration = Math.random() * 2 + 2.5;
+          const delay = Math.random() * 0.8;
           const rotate = Math.random() * 360;
-          const shape = shapes[Math.floor(Math.random() * shapes.length)];
+          const isCircle = Math.random() > 0.6;
 
-          let borderRadius = '2px';
-          let width = size;
-          let height = size * (0.5 + Math.random() * 0.6);
-
-          if (shape === 'circle') {
-            borderRadius = '50%';
-            width = size;
-            height = size;
-          } else if (shape === 'star') {
-            // ستاره با clip-path ساده
-            borderRadius = '0';
-            width = size;
-            height = size;
-            el.style.clipPath = 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)';
-            el.style.background = color;
-          }
-
-          el.style.width = width + 'px';
-          el.style.height = height + 'px';
+          el.style.width = size + 'px';
+          el.style.height = (isCircle ? size : size * (0.5 + Math.random() * 0.5)) + 'px';
           el.style.background = color;
           el.style.left = left + '%';
           el.style.top = '-10px';
-          el.style.borderRadius = borderRadius;
+          el.style.borderRadius = isCircle ? '50%' : '2px';
           el.style.animationDuration = duration + 's';
           el.style.animationDelay = delay + 's';
           el.style.transform = `rotate(${rotate}deg)`;
-          el.style.boxShadow = `0 0 20px ${color}40`;
+          el.style.boxShadow = `0 0 12px ${color}60`;
 
           document.body.appendChild(el);
-          setTimeout(() => { if (el.parentNode) el.remove(); }, (duration + delay) * 1000 + 300);
+          setTimeout(() => { if (el.parentNode) el.remove(); }, (duration + delay) * 1000 + 200);
         }
       }
 
       // ============================================================
-      // 3. دکمه با افکت موج (Ripple) و انفجار کانفتی
+      // 3. دکمه و رویدادها
       // ============================================================
       const btn = document.getElementById('fireConfettiBtn');
 
       btn.addEventListener('click', function(e) {
-        // ریپل
-        const rect = this.getBoundingClientRect();
-        const ripple = document.createElement('span');
-        ripple.className = 'ripple-effect';
-        const size = Math.max(rect.width, rect.height);
-        ripple.style.width = ripple.style.height = size + 'px';
-        ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
-        ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
-        this.appendChild(ripple);
-        setTimeout(() => ripple.remove(), 800);
-
-        // انفجار کانفتی
-        createConfetti(150);
-        setTimeout(() => createConfetti(80), 300);
-        setTimeout(() => createConfetti(50), 700);
-
-        // جلوه‌ی نور روی دکمه
+        // افکت فشرده شدن
         this.style.transform = 'scale(0.92)';
-        setTimeout(() => { this.style.transform = ''; }, 200);
+        setTimeout(() => { this.style.transform = ''; }, 150);
 
-        // هایلایت پیام
+        // کانفتی در سه موج
+        createConfetti(90);
+        setTimeout(() => createConfetti(50), 250);
+        setTimeout(() => createConfetti(30), 550);
+
+        // نور روی پیام
         const msg = document.querySelector('.message');
-        msg.style.transition = 'box-shadow 0.4s, border-color 0.4s';
-        msg.style.boxShadow = '0 0 80px rgba(255,215,0,0.3)';
+        msg.style.boxShadow = '0 0 60px rgba(255,215,0,0.25)';
         msg.style.borderColor = '#ffd700';
         setTimeout(() => {
-          msg.style.boxShadow = 'inset 0 0 50px rgba(255,215,0,0.03)';
+          msg.style.boxShadow = 'inset 0 0 40px rgba(255,215,0,0.02)';
           msg.style.borderColor = '#f39c12';
-        }, 800);
+        }, 700);
       });
 
       // ============================================================
-      // 4. تایپ‌رایتر واقعی روی پیام (با cursor blink)
+      // 4. مخفی کردن cursor بعد از 3 ثانیه
       // ============================================================
-      (function typewriterEffect() {
-        const msgContainer = document.getElementById('typewriterMessage');
-        // متن اصلی با تگ‌ها (برای هایلایت)
-        const fullHTML = `
-          <span class="hl">❤️ عمو هادی عزیز ❤️</span><br />
-          بهترین‌ها را برایت آرزو میکنم.<br />
-          روزت پر از <span class="hl">شادی، عشق و موفقیت</span> 🌟
-        `;
-        // برای تایپ‌رایتر، بهتر است متن را به صورت رشته‌ای با تگ‌ها نگه داریم و به تدریج نمایش دهیم.
-        // اما تایپ‌رایتر با HTML پیچیده است. بنابراین یک روش ساده‌تر: 
-        // ابتدا یک متن ساده را تایپ می‌کنیم و بعد با innerHTML جایگزین می‌کنیم.
-        // اما برای جلوه‌ی زیبا، از یک افکت fade-in استفاده می‌کنیم که قبلاً با کلاس .loading-fade انجام شده.
-        // بنابراین نیازی به تایپ‌رایتر واقعی نیست، چون کارت با fade-in وارد می‌شود.
-        // اما برای نمایش cursor blink، آن را نگه می‌داریم و بعد از 3 ثانیه حذف می‌کنیم.
-        // همچنین می‌توانیم یک افکت تایپ روی خط اول انجام دهیم.
-
-        // ساده‌ترین: پیام کامل با fade-in نمایش داده می‌شود و cursor بعد از 3 ثانیه ناپدید می‌شود.
-        setTimeout(() => {
-          const cursor = msgContainer.querySelector('.cursor-blink');
-          if (cursor) cursor.style.display = 'none';
-        }, 3000);
-      })();
+      setTimeout(() => {
+        const cursor = document.querySelector('.cursor-blink');
+        if (cursor) cursor.style.display = 'none';
+      }, 3000);
 
       // ============================================================
-      // 5. کانفتی اولیه در شروع
+      // 5. کانفتی اولیه هنگام لود
       // ============================================================
       window.addEventListener('load', function() {
-        setTimeout(() => createConfetti(60), 800);
-        setTimeout(() => createConfetti(40), 1600);
-        setTimeout(() => createConfetti(30), 2400);
+        setTimeout(() => createConfetti(40), 500);
+        setTimeout(() => createConfetti(30), 1200);
       });
 
       // ============================================================
-      // 6. افکت پارالاکس با حرکت موس (شیشه‌ای)
+      // 6. پارالاکس خفیف با موس (سبک)
       // ============================================================
       const card = document.querySelector('.card');
-      let isMouseOver = false;
+      let isHover = false;
 
       document.addEventListener('mousemove', function(e) {
-        const x = (e.clientX / window.innerWidth - 0.5) * 8;
-        const y = (e.clientY / window.innerHeight - 0.5) * 8;
-        card.style.transition = 'transform 0.15s cubic-bezier(0.23, 1, 0.32, 1)';
-        card.style.transform = `translateY(-10px) perspective(800px) rotateY(${x * 0.6}deg) rotateX(${-y * 0.6}deg) scale(1.01)`;
+        const x = (e.clientX / window.innerWidth - 0.5) * 6;
+        const y = (e.clientY / window.innerHeight - 0.5) * 6;
+        card.style.transition = 'transform 0.12s ease-out';
+        card.style.transform = `translateY(-6px) perspective(600px) rotateY(${x * 0.5}deg) rotateX(${-y * 0.5}deg) scale(1.005)`;
       });
 
       document.addEventListener('mouseleave', function() {
-        card.style.transition = 'transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)';
+        card.style.transition = 'transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1)';
         card.style.transform = '';
       });
 
+      // برای کاهش مصرف منابع، وقتی موس روی کارت نیست، افکت متوقف شود
+      card.addEventListener('mouseenter', () => { isHover = true; });
+      card.addEventListener('mouseleave', () => { isHover = false; });
+
       // ============================================================
-      // 7. دکمه با افکت نور شناور (موس)
+      // 7. دکمه با نور شناور (اختیاری، سبک)
       // ============================================================
       btn.addEventListener('mousemove', function(e) {
         const rect = this.getBoundingClientRect();
