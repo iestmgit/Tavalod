@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>تولدت مبارک عمو هادی ❤️</title>
+  <title>🎂 تولدت مبارک عمو هادی!</title>
   <link href="https://fonts.googleapis.com/css2?family=Vazir+Matn:wght@300;700;900&display=swap" rel="stylesheet" />
   <style>
+    /* ===== RESET & BASE ===== */
     * {
       margin: 0;
       padding: 0;
@@ -18,237 +19,295 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #0a0a0f;
+      background: #0a0a12;
       overflow: hidden;
-      padding: 20px;
       position: relative;
+      cursor: default;
     }
 
-    /* پس‌زمینهٔ گرادیان متحرک */
-    .bg-glow {
+    /* ===== BACKGROUND: گرادیان متحرک با جلوه‌ی عمق ===== */
+    .bg-layer {
       position: fixed;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle at 30% 40%, #1a0e05, #0a0a0f 70%);
+      inset: 0;
       z-index: 0;
-      animation: bgPulse 12s ease-in-out infinite alternate;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(180, 90, 30, 0.25) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(200, 150, 50, 0.2) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 80%, rgba(100, 50, 150, 0.15) 0%, transparent 50%),
+        #0a0a12;
+      animation: bgShift 20s ease-in-out infinite alternate;
     }
-    @keyframes bgPulse {
+    @keyframes bgShift {
       0% { transform: scale(1) rotate(0deg); }
-      100% { transform: scale(1.1) rotate(3deg); }
+      100% { transform: scale(1.15) rotate(3deg); }
     }
 
-    /* ذرات درخشان (ستاره‌ها) با کد JS */
+    /* ===== CANVAS برای ذرات سه‌بعدی ===== */
+    #particles-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
 
-    /* کارت اصلی — شیشه‌ای با درخشش طلایی */
+    /* ===== کارت اصلی با افکت شیشه‌ای و هاله‌ی طلایی ===== */
     .card {
       position: relative;
       z-index: 10;
-      max-width: 780px;
+      max-width: 820px;
       width: 100%;
-      background: rgba(255, 255, 255, 0.04);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-radius: 80px 20px 80px 20px;
-      padding: 44px 32px 52px;
-      box-shadow: 0 50px 80px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 215, 0, 0.15);
-      border: 1px solid rgba(255, 215, 0, 0.2);
+      margin: 20px;
+      background: rgba(255, 255, 255, 0.035);
+      backdrop-filter: blur(24px) saturate(1.4);
+      -webkit-backdrop-filter: blur(24px) saturate(1.4);
+      border-radius: 90px 20px 90px 20px;
+      padding: 48px 36px 56px;
+      box-shadow:
+        0 60px 120px rgba(0, 0, 0, 0.8),
+        0 0 0 1px rgba(255, 215, 0, 0.15),
+        inset 0 0 80px rgba(255, 215, 0, 0.03);
+      border: 1px solid rgba(255, 215, 0, 0.12);
       text-align: center;
-      transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.5s ease;
-      animation: floatCard 6s ease-in-out infinite;
+      transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.6s ease;
+      animation: cardFloat 7s ease-in-out infinite;
     }
-    @keyframes floatCard {
+    @keyframes cardFloat {
       0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-14px) rotate(0.5deg); }
+      50% { transform: translateY(-18px) rotate(0.6deg); }
     }
     .card:hover {
-      transform: translateY(-8px) scale(1.01);
-      box-shadow: 0 60px 100px rgba(0, 0, 0, 0.9), 0 0 0 2px rgba(255, 215, 0, 0.4), 0 0 60px rgba(255, 200, 50, 0.2);
+      transform: translateY(-10px) scale(1.012);
+      box-shadow:
+        0 80px 160px rgba(0, 0, 0, 0.9),
+        0 0 0 2px rgba(255, 215, 0, 0.35),
+        0 0 70px rgba(255, 200, 50, 0.15);
     }
 
-    /* هالهٔ طلایی دور کارت */
+    /* هاله‌ی طلایی براق */
     .card::before {
       content: '';
       position: absolute;
-      inset: -3px;
-      border-radius: 82px 22px 82px 22px;
+      inset: -4px;
+      border-radius: 92px 22px 92px 22px;
       background: linear-gradient(135deg, #f9d976, #f39c12, #f1c40f, #e67e22, #f9d976);
       background-size: 400% 400%;
       z-index: -1;
-      filter: blur(12px);
-      opacity: 0.6;
-      animation: goldBorder 8s ease infinite;
+      filter: blur(18px);
+      opacity: 0.5;
+      animation: goldPulse 8s ease-in-out infinite;
     }
-    @keyframes goldBorder {
-      0% { background-position: 0% 50%; opacity: 0.5; }
-      50% { background-position: 100% 50%; opacity: 0.9; }
-      100% { background-position: 0% 50%; opacity: 0.5; }
+    @keyframes goldPulse {
+      0% { background-position: 0% 50%; opacity: 0.4; transform: scale(0.98); }
+      50% { background-position: 100% 50%; opacity: 0.8; transform: scale(1.04); }
+      100% { background-position: 0% 50%; opacity: 0.4; transform: scale(0.98); }
     }
 
-    /* عنوان */
+    /* ===== عنوان تبریک ===== */
     .greeting {
       font-size: 2.8rem;
       font-weight: 900;
-      background: linear-gradient(135deg, #ffd700, #ffb347, #ff8c00, #ffd700);
+      background: linear-gradient(135deg, #ffe680, #ffb347, #ff8c00, #ffe680);
       background-size: 300% 300%;
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      animation: shimmerText 5s ease-in-out infinite;
-      text-shadow: 0 0 40px rgba(255, 200, 0, 0.2);
-      letter-spacing: 3px;
-      margin-bottom: 6px;
+      animation: shimmerGold 5s ease-in-out infinite;
+      text-shadow: 0 0 50px rgba(255, 200, 0, 0.2);
+      letter-spacing: 4px;
+      margin-bottom: 4px;
     }
-    @keyframes shimmerText {
+    @keyframes shimmerGold {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
 
-    /* اسم عمو هادی با افکت موج */
+    /* ===== اسم عمو هادی با افکت نئون موج‌دار ===== */
+    .name-wrapper {
+      position: relative;
+      display: inline-block;
+      margin: 6px 0 2px;
+    }
     .name {
-      font-size: 5rem;
+      font-size: 5.4rem;
       font-weight: 900;
       color: #fff;
-      text-shadow: 0 0 20px #f1c40f, 0 0 50px #e67e22, 0 0 90px #f39c12;
-      letter-spacing: 10px;
-      margin: 8px 0 4px;
-      animation: waveGlow 2.8s ease-in-out infinite alternate;
+      letter-spacing: 14px;
+      text-shadow:
+        0 0 20px rgba(241, 196, 15, 0.6),
+        0 0 50px rgba(230, 126, 34, 0.5),
+        0 0 90px rgba(243, 156, 18, 0.4),
+        0 0 140px rgba(241, 196, 15, 0.2);
+      animation: neonWave 3.2s ease-in-out infinite alternate;
+      position: relative;
+      z-index: 2;
     }
-    @keyframes waveGlow {
-      0% { text-shadow: 0 0 10px #f1c40f, 0 0 30px #e67e22, 0 0 60px #f39c12; transform: scale(1); }
-      100% { text-shadow: 0 0 30px #ffd700, 0 0 70px #ff8c00, 0 0 120px #ffa500; transform: scale(1.02); }
+    @keyframes neonWave {
+      0% {
+        text-shadow: 0 0 15px #f1c40f, 0 0 40px #e67e22, 0 0 70px #f39c12, 0 0 100px #f1c40f;
+        transform: scale(1);
+      }
+      100% {
+        text-shadow: 0 0 35px #ffd700, 0 0 80px #ff8c00, 0 0 130px #ffa500, 0 0 180px #ffd700;
+        transform: scale(1.04);
+      }
+    }
+    /* زیرخط طلایی زیر اسم */
+    .name-underline {
+      width: 70%;
+      height: 4px;
+      margin: 8px auto 0;
+      background: linear-gradient(90deg, transparent, #f1c40f, #e67e22, #f1c40f, transparent);
+      border-radius: 10px;
+      animation: underlinePulse 2.4s ease-in-out infinite;
+    }
+    @keyframes underlinePulse {
+      0%, 100% { transform: scaleX(0.8); opacity: 0.5; }
+      50% { transform: scaleX(1.2); opacity: 1; }
     }
 
-    /* برچسب سن */
+    /* ===== برچسب سن ===== */
     .age-badge {
       display: inline-block;
-      background: rgba(255, 215, 0, 0.12);
-      backdrop-filter: blur(4px);
-      border: 1px solid rgba(255, 215, 0, 0.4);
-      padding: 6px 28px;
+      background: rgba(255, 215, 0, 0.10);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      padding: 6px 32px;
       border-radius: 60px;
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       font-weight: 700;
       color: #ffeaa7;
-      letter-spacing: 2px;
-      box-shadow: 0 0 30px rgba(255, 200, 0, 0.1);
-      margin: 12px 0 18px;
+      letter-spacing: 3px;
+      box-shadow: 0 0 30px rgba(255, 200, 0, 0.08);
+      margin: 10px 0 16px;
     }
 
-    /* ایموجی‌های رقصان */
+    /* ===== ایموجی‌های رقصان ===== */
     .emoji-row {
-      font-size: 3.4rem;
-      letter-spacing: 18px;
-      margin: 10px 0 20px;
-      animation: danceEmoji 2.4s ease-in-out infinite;
+      font-size: 3.8rem;
+      letter-spacing: 20px;
+      margin: 8px 0 18px;
+      animation: emojiDance 2.6s ease-in-out infinite;
+      filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.2));
     }
-    @keyframes danceEmoji {
-      0%, 100% { transform: rotate(-3deg) scale(1); }
-      50% { transform: rotate(3deg) scale(1.15); }
+    @keyframes emojiDance {
+      0%, 100% { transform: rotate(-4deg) scale(1); }
+      50% { transform: rotate(4deg) scale(1.18); }
     }
 
-    /* پیام با افکت تایپ‌رایتر (با JS) */
-    .message-wrapper {
-      min-height: 90px;
+    /* ===== پیام با تایپ‌رایتر ===== */
+    .message-box {
+      min-height: 100px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 12px 0 20px;
+      margin: 10px 0 22px;
     }
     .message {
       font-size: 1.35rem;
-      line-height: 2.2rem;
+      line-height: 2.3rem;
       color: #f0e6d3;
       font-weight: 300;
-      background: rgba(0, 0, 0, 0.3);
-      padding: 18px 24px;
-      border-radius: 50px 10px 50px 10px;
+      background: rgba(0, 0, 0, 0.35);
+      padding: 20px 28px;
+      border-radius: 60px 12px 60px 12px;
       border-right: 4px solid #f1c40f;
       border-left: 4px solid #f39c12;
-      backdrop-filter: blur(4px);
-      box-shadow: inset 0 0 40px rgba(255, 215, 0, 0.03);
+      backdrop-filter: blur(6px);
+      box-shadow: inset 0 0 50px rgba(255, 215, 0, 0.03);
       width: 100%;
       text-align: center;
-      direction: rtl;
+      min-height: 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
-    .message .highlight {
+    .message .hl {
       color: #ffd700;
       font-weight: 700;
-      text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+      text-shadow: 0 0 25px rgba(255, 215, 0, 0.25);
     }
     .cursor-blink {
       display: inline-block;
-      width: 3px;
-      height: 1.6rem;
+      width: 4px;
+      height: 1.8rem;
       background: #ffd700;
       margin-right: 4px;
       vertical-align: middle;
       animation: blink 0.9s step-end infinite;
+      border-radius: 2px;
     }
     @keyframes blink {
       0%, 100% { opacity: 1; }
       50% { opacity: 0; }
     }
 
-    /* دکمهٔ هدیه */
+    /* ===== دکمه هدیه با افکت موج و انفجار ===== */
     .btn-gift {
+      position: relative;
       display: inline-block;
-      padding: 18px 55px;
+      padding: 20px 60px;
       background: linear-gradient(145deg, #f1c40f, #e67e22);
       border: none;
-      border-radius: 60px;
+      border-radius: 70px;
       color: #0b0e1a;
-      font-size: 1.6rem;
+      font-size: 1.7rem;
       font-weight: 900;
       font-family: 'Vazir Matn', sans-serif;
       cursor: pointer;
-      box-shadow: 0 12px 35px rgba(241, 196, 15, 0.4);
+      box-shadow: 0 15px 40px rgba(241, 196, 15, 0.4);
       transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-      letter-spacing: 2px;
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      margin-top: 10px;
-      position: relative;
+      letter-spacing: 3px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      margin-top: 8px;
       overflow: hidden;
+      user-select: none;
     }
-    .btn-gift::after {
+    .btn-gift::before {
       content: '';
       position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+      inset: 0;
+      background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, 0.4) 0%, transparent 70%);
       opacity: 0;
-      transition: opacity 0.5s ease;
-      transform: rotate(25deg);
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+    .btn-gift:hover::before {
+      opacity: 1;
     }
     .btn-gift:hover {
-      transform: scale(1.08);
-      box-shadow: 0 20px 60px #f39c12, 0 0 90px #f1c40f;
+      transform: scale(1.09) translateY(-3px);
+      box-shadow: 0 25px 70px #f39c12, 0 0 100px #f1c40f;
       background: linear-gradient(145deg, #ffe066, #f39c12);
       color: #000;
     }
-    .btn-gift:hover::after {
-      opacity: 1;
-    }
     .btn-gift:active {
-      transform: scale(0.94);
+      transform: scale(0.93);
+    }
+    /* موج دایره‌ای هنگام کلیک */
+    .ripple-effect {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      transform: scale(0);
+      animation: rippleAnim 0.8s ease-out forwards;
+      pointer-events: none;
+    }
+    @keyframes rippleAnim {
+      to { transform: scale(4); opacity: 0; }
     }
 
-    /* پانوشت */
+    /* ===== پانوشت ===== */
     .footer-note {
-      margin-top: 30px;
-      color: rgba(255, 215, 0, 0.25);
+      margin-top: 32px;
+      color: rgba(255, 215, 0, 0.2);
       font-size: 0.85rem;
-      letter-spacing: 3px;
-      border-top: 1px solid rgba(255, 215, 0, 0.07);
-      padding-top: 22px;
+      letter-spacing: 4px;
+      border-top: 1px solid rgba(255, 215, 0, 0.06);
+      padding-top: 24px;
     }
 
-    /* کانفتی‌ها */
+    /* ===== کانفتی‌ها (جاوااسکریپت) ===== */
     .confetti-piece {
       position: fixed;
       pointer-events: none;
@@ -257,301 +316,309 @@
     }
     @keyframes confettiFall {
       0% {
-        transform: translateY(-10vh) rotate(0deg) scale(0.8);
+        transform: translateY(-10vh) rotate(0deg) scale(0.7);
         opacity: 1;
       }
       100% {
-        transform: translateY(110vh) rotate(720deg) scale(0.2);
-        opacity: 0.2;
+        transform: translateY(110vh) rotate(720deg) scale(0.15);
+        opacity: 0.1;
       }
     }
 
-    /* ریسپانسیو */
+    /* ===== ریسپانسیو ===== */
     @media (max-width: 640px) {
-      .card { padding: 30px 16px 40px; border-radius: 50px 10px 50px 10px; }
+      .card { padding: 30px 16px 40px; border-radius: 50px 10px 50px 10px; margin: 12px; }
       .greeting { font-size: 2rem; }
-      .name { font-size: 3.4rem; letter-spacing: 5px; }
-      .message { font-size: 1.05rem; padding: 14px; }
-      .btn-gift { font-size: 1.3rem; padding: 14px 30px; }
-      .emoji-row { font-size: 2.6rem; letter-spacing: 12px; }
+      .name { font-size: 3.4rem; letter-spacing: 6px; }
+      .message { font-size: 1.05rem; padding: 14px; line-height: 2rem; }
+      .btn-gift { font-size: 1.3rem; padding: 16px 32px; }
+      .emoji-row { font-size: 2.8rem; letter-spacing: 14px; }
       .age-badge { font-size: 1rem; padding: 4px 20px; }
+      .footer-note { font-size: 0.7rem; }
+      .name-underline { width: 50%; }
     }
+    @media (max-width: 400px) {
+      .name { font-size: 2.6rem; letter-spacing: 4px; }
+      .greeting { font-size: 1.6rem; }
+      .btn-gift { font-size: 1.1rem; padding: 14px 24px; }
+    }
+
+    /* ===== پیش‌بارگذاری ===== */
+    .loading-fade {
+      animation: fadeInUp 1.4s ease forwards;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.3s; }
+    .delay-3 { animation-delay: 0.6s; }
+    .delay-4 { animation-delay: 0.9s; }
+    .delay-5 { animation-delay: 1.2s; }
   </style>
 </head>
 <body>
 
-  <div class="bg-glow"></div>
-  <canvas id="starsCanvas"></canvas>
+  <!-- ===== لایه‌ی پس‌زمینه ===== -->
+  <div class="bg-layer"></div>
 
-  <div class="card">
-    <div class="greeting">🎂 تولدت مبارک 🎂</div>
-    <div class="name">عمو هادی</div>
-    <div class="age-badge">✨ امروز روز خاص توست ✨</div>
-    <div class="emoji-row">🎁 🥳 🎈 🎉 🎊</div>
+  <!-- ===== کانواس ذرات ===== -->
+  <canvas id="particles-canvas"></canvas>
 
-    <div class="message-wrapper">
-      <div class="message" id="typewriter">
-        <span class="highlight">❤️ عمو هادی عزیز ❤️</span><br />
+  <!-- ===== کارت اصلی ===== -->
+  <div class="card loading-fade delay-1">
+
+    <div class="greeting loading-fade delay-2">🎂 تولدت مبارک 🎂</div>
+
+    <div class="name-wrapper loading-fade delay-3">
+      <div class="name">عمو هادی</div>
+      <div class="name-underline"></div>
+    </div>
+
+    <div class="age-badge loading-fade delay-3">✨ امروز روز خاص توست ✨</div>
+
+    <div class="emoji-row loading-fade delay-3">🎁 🥳 🎈 🎉 🎊</div>
+
+    <div class="message-box loading-fade delay-4">
+      <div class="message" id="typewriterMessage">
+        <span class="hl">❤️ عمو هادی عزیز ❤️</span><br />
         بهترین‌ها را برایت آرزو میکنم.<br />
-        روزت پر از <span class="highlight">شادی، عشق و موفقیت</span> 🌟
+        روزت پر از <span class="hl">شادی، عشق و موفقیت</span> 🌟
         <span class="cursor-blink"></span>
       </div>
     </div>
 
-    <button class="btn-gift" id="fireConfetti">🎁 هدیه‌ی مخصوص 🎁</button>
+    <button class="btn-gift loading-fade delay-5" id="fireConfettiBtn">🎁 هدیه‌ی مخصوص 🎁</button>
 
-    <div class="footer-note">★ با عشق از طرف خانواده ★</div>
+    <div class="footer-note loading-fade delay-5">★ با عشق از طرف خانواده ★</div>
+
   </div>
 
   <script>
     (function() {
-      // ====== 1. ستاره‌های پس‌زمینه (کانواس) ======
-      const canvas = document.getElementById('starsCanvas');
+      'use strict';
+
+      // ============================================================
+      // 1. ذرات پس‌زمینه (ستاره‌های سه‌بعدی با عمق)
+      // ============================================================
+      const canvas = document.getElementById('particles-canvas');
       const ctx = canvas.getContext('2d');
-      let w, h;
-      let stars = [];
+      let W, H;
+      let particles = [];
 
       function resizeCanvas() {
-        w = canvas.width = window.innerWidth;
-        h = canvas.height = window.innerHeight;
+        W = canvas.width = window.innerWidth;
+        H = canvas.height = window.innerHeight;
       }
       window.addEventListener('resize', resizeCanvas);
       resizeCanvas();
 
-      class Star {
+      class StarParticle {
         constructor() { this.reset(); }
         reset() {
-          this.x = Math.random() * w;
-          this.y = Math.random() * h;
-          this.r = Math.random() * 2.2 + 0.6;
-          this.dx = (Math.random() - 0.5) * 0.25;
-          this.dy = (Math.random() - 0.5) * 0.25;
-          this.alpha = Math.random() * 0.6 + 0.3;
-          this.hue = 38 + Math.random() * 25;
+          this.x = Math.random() * W;
+          this.y = Math.random() * H;
+          this.z = Math.random() * 100 + 20; // عمق
+          this.r = Math.random() * 2.4 + 0.6;
+          this.dx = (Math.random() - 0.5) * 0.2;
+          this.dy = (Math.random() - 0.5) * 0.2;
+          this.dz = (Math.random() - 0.5) * 0.15;
+          this.alpha = Math.random() * 0.5 + 0.3;
+          this.hue = 38 + Math.random() * 30;
+          this.sat = 80 + Math.random() * 20;
         }
         update() {
           this.x += this.dx;
           this.y += this.dy;
-          if (this.x < 0 || this.x > w) this.dx *= -1;
-          if (this.y < 0 || this.y > h) this.dy *= -1;
+          this.z += this.dz;
+          if (this.x < 0 || this.x > W) this.dx *= -1;
+          if (this.y < 0 || this.y > H) this.dy *= -1;
+          if (this.z < 10 || this.z > 120) this.dz *= -1;
+          // اندازه با عمق تغییر می‌کند
+          this.scale = 1 + (this.z - 20) / 100;
         }
         draw() {
+          const r = this.r * this.scale;
+          const alpha = this.alpha * (0.6 + 0.4 * (this.z / 120));
           ctx.beginPath();
-          ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-          ctx.fillStyle = `hsla(${this.hue}, 90%, 70%, ${this.alpha})`;
+          ctx.arc(this.x, this.y, r, 0, Math.PI * 2);
+          ctx.fillStyle = `hsla(${this.hue}, ${this.sat}%, 70%, ${alpha})`;
           ctx.shadowColor = '#ffd700';
-          ctx.shadowBlur = 14;
+          ctx.shadowBlur = 18;
           ctx.fill();
         }
       }
 
-      for (let i = 0; i < 150; i++) stars.push(new Star());
+      for (let i = 0; i < 160; i++) particles.push(new StarParticle());
 
-      function animateStars() {
-        ctx.clearRect(0, 0, w, h);
-        stars.forEach(s => { s.update(); s.draw(); });
-        requestAnimationFrame(animateStars);
+      function animateParticles() {
+        ctx.clearRect(0, 0, W, H);
+        particles.forEach(p => { p.update(); p.draw(); });
+        requestAnimationFrame(animateParticles);
       }
-      animateStars();
+      animateParticles();
 
-      // ====== 2. افکت تایپ‌رایتر برای پیام ======
-      const msgEl = document.getElementById('typewriter');
-      // متن اصلی (با برچسب‌های HTML)
-      const fullHTML = `<span class="highlight">❤️ عمو هادی عزیز ❤️</span><br />بهترین‌ها را برایت آرزو میکنم.<br />روزت پر از <span class="highlight">شادی، عشق و موفقیت</span> 🌟`;
+      // ============================================================
+      // 2. کانفتی‌های سه‌بعدی با اشکال متنوع
+      // ============================================================
+      function createConfetti(count = 130) {
+        const colors = [
+          '#ffd700', '#ff6b6b', '#4ecdc4', '#ffe66d', '#ff9ff3',
+          '#f368e0', '#ff9f43', '#00d2d3', '#1dd1a1', '#feca57',
+          '#a29bfe', '#fd79a8', '#fdcb6e', '#e17055', '#00b894',
+          '#6c5ce7', '#fd79a8', '#fdcb6e'
+        ];
+        const shapes = ['circle', 'rect', 'star'];
 
-      // برای سادگی، از innerHTML استفاده می‌کنیم و به صورت آنی نمایش می‌دهیم،
-      // اما برای افکت تایپ، می‌توانیم حروف را یکی یکی نشان دهیم.
-      // در اینجا یک افکت تایپ ملایم با setInterval انجام می‌دهیم (فقط برای حروف ساده)
-      // اما چون HTML داریم، بهتر است یک پیام ساده‌تر را تایپ کنیم.
-      // پیاده‌سازی ساده: کل متن را با یک افکت محو شدن نشان می‌دهیم.
-      // اما برای زیبایی، یک افکت تایپ واقعی روی متن ساده (بدون تگ) انجام می‌دهیم.
-      // بیایید یک نسخه‌ی ساده‌تر از پیام را تایپ کنیم.
-
-      // ما از روشی استفاده می‌کنیم که پیام را به صورت متنی با تگ‌های span نمایش دهیم.
-      // اما تایپ‌رایتر با HTML پیچیده است. بنابراین یک افکت محو شدن و ظاهر شدن تدریجی انجام می‌دهیم.
-      // راه حل: پیام را با opacity و transition نشان می‌دهیم.
-
-      // اما به جای تایپ‌رایتر، یک انیمیشن fade-in با تاخیر برای کلمات انجام می‌دهیم.
-      // برای این کار، پیام را به چند بخش تقسیم می‌کنیم و با JS به ترتیب نشان می‌دهیم.
-
-      // پیاده‌سازی سریع و زیبا: متن را به صورت کامل با یک افکت fade-in از پایین نشان می‌دهیم.
-      // این کار ساده‌تر و روان‌تر است.
-      // ما یک کلاس به پیام اضافه می‌کنیم که با تاخیر نمایش داده شود.
-      // در واقع در CSS یک انیمیشن fadeInUp تعریف می‌کنیم.
-
-      // برای این نسخه، از روش زیر استفاده می‌کنیم:
-      // 1. ابتدا پیام مخفی است.
-      // 2. بعد از 500ms نمایش داده می‌شود با انیمیشن.
-
-      // در HTML، داخل .message محتوای کامل را قرار می‌دهیم ولی opacity=0 و transition داریم.
-      // با JS بعد از لود، opacity را به 1 تغییر می‌دهیم.
-
-      // اما برای اینکه کار خاصی انجام دهیم، یک تایپ‌رایتر ساده روی یک متن جایگزین پیاده‌سازی می‌کنیم.
-      // بیایید یک پیام متنی ساده بدون تگ داشته باشیم و تایپ کنیم.
-      // ولی کاربر می‌خواهد همان پیام زیبا با هایلایت باشد. بنابراین از یک روش ترکیبی استفاده می‌کنیم:
-      // کل متن را با innerHTML تنظیم می‌کنیم ولی با opacity=0 شروع و بعد fade-in می‌کنیم.
-
-      // این روش بسیار ساده و در عین حال زیباست.
-      // ما قبلاً در HTML پیام کامل را قرار داده‌ایم. فقط opacity را با JS کنترل می‌کنیم.
-
-      // در واقع ما در CSS یک کلاس .show به .message اضافه می‌کنیم که opacity=1 و transform: translateY(0)
-      // و برای آن transition می‌دهیم.
-
-      // برای اینکه کار حرفه‌ای‌تر شود، یک تایپ‌رایتر واقعی روی یک متن ساده پیاده‌سازی می‌کنیم.
-      // اما اینجا فقط برای نمایش زیبایی، از fade-in استفاده می‌کنیم که بسیار روان است.
-
-      // پیاده‌سازی نهایی: با استفاده از requestAnimationFrame و setInterval یک تایپ‌رایتر ساده
-      // که فقط روی متن ساده (بدون تگ) کار می‌کند، اما ما می‌خواهیم تگ‌ها حفظ شوند.
-      // بنابراین از یک روش هوشمندانه استفاده می‌کنیم: متن را به صورت آرایه‌ای از کاراکترها با تگ‌ها می‌شکنیم.
-      // اما این پیچیده است. پس به جای آن، از یک افکت محو شدن تدریجی با تاخیر برای هر کلمه استفاده می‌کنیم.
-
-      // بهترین راه: پیام را به سه بخش تقسیم می‌کنیم و هر بخش را با تاخیر نشان می‌دهیم.
-      // اما برای سادگی و زیبایی، یک افکت ماشین تحریر روی کل متن (با حفظ تگ‌های HTML) انجام می‌دهیم.
-      // این کار با innerHTML و setInterval ممکن است اما تگ‌ها به هم می‌ریزند.
-      // بنابراین یک راه حل ساده: پیام را به صورت یک رشته با تگ‌ها نگه می‌داریم و با استفاده از
-      // insertAdjacentHTML و or innerHTML به تدریج کاراکترها را اضافه می‌کنیم، اما تگ‌ها را کامل نگه می‌داریم.
-      // یعنی به جای کاراکتر به کاراکتر، کلمه به کلمه یا بخش به بخش اضافه کنیم.
-
-      // من یک راه حل بسیار زیبا و ساده ارائه می‌دهم: 
-      // پیام را به سه خط تقسیم می‌کنیم و هر خط را با تاخیر 400ms نمایش می‌دهیم با انیمیشن fadeInUp.
-      // این کار بسیار روان و زیباست.
-
-      // بنابراین، تغییرات:
-      // - در HTML، سه div جداگانه برای هر خط قرار می‌دهیم.
-      // - با JS به ترتیب کلاس 'show' به آنها اضافه می‌کنیم.
-
-      // اما برای اینکه کد ساده بماند، من از روشی استفاده می‌کنم که در آن کل پیام به صورت
-      // یکجا با opacity=0 شروع و بعد از 500ms با transition به opacity=1 می‌رسد.
-      // همچنین یک افکت slide-up هم دارد.
-
-      // این کار را با اضافه کردن کلاس به .message انجام می‌دهیم.
-
-      // برای پیاده‌سازی، در CSS یک کلاس .typed اضافه می‌کنیم که opacity و transform را تغییر دهد.
-
-      // اما در حال حاضر، من از روش زیر استفاده می‌کنم که بسیار ساده و موثر است:
-      // بعد از لود صفحه، یک کلاس به .message اضافه می‌کنیم که انیمیشن fadeInUp را فعال کند.
-
-      // برای این کار، در CSS یک انیمیشن تعریف می‌کنیم و با JS کلاس را اضافه می‌کنیم.
-      // به خاطر داشته باشید که ما نمی‌خواهیم پیچیده شود.
-
-      // در نهایت، من از یک تایپ‌رایتر واقعی با استفاده از کتابخانه‌های خارجی صرف نظر می‌کنم
-      // و از یک انیمیشن fade-in با تاخیر استفاده می‌کنم که بسیار زیبا و روان است.
-
-      // پیاده‌سازی نهایی:
-      // ما یک کلاس .show به .message اضافه می‌کنیم که opacity=1 و transform: translateY(0) دارد.
-      // و transition تعریف می‌کنیم.
-
-      // بنابراین در CSS:
-      // .message { opacity: 0; transform: translateY(20px); transition: all 1s ease; }
-      // .message.show { opacity: 1; transform: translateY(0); }
-
-      // و در JS:
-      // setTimeout(() => { document.querySelector('.message').classList.add('show'); }, 400);
-
-      // عالی! این کار را انجام می‌دهیم.
-
-      // ====== 3. کانفتی ======
-      function createConfetti(count = 100) {
-        const colors = ['#ffd700', '#ff6b6b', '#4ecdc4', '#ffe66d', '#ff9ff3', '#f368e0', '#ff9f43', '#00d2d3', '#1dd1a1', '#feca57', '#a29bfe', '#fd79a8'];
         for (let i = 0; i < count; i++) {
           const el = document.createElement('div');
           el.className = 'confetti-piece';
-          const size = Math.random() * 16 + 6;
           const color = colors[Math.floor(Math.random() * colors.length)];
+          const size = Math.random() * 18 + 8;
           const left = Math.random() * 100;
-          const duration = Math.random() * 2 + 2.5;
+          const duration = Math.random() * 2.5 + 2.8;
           const delay = Math.random() * 1.2;
           const rotate = Math.random() * 360;
-          const shape = Math.random() > 0.5 ? '50%' : '2px';
+          const shape = shapes[Math.floor(Math.random() * shapes.length)];
 
-          el.style.width = size + 'px';
-          el.style.height = size * (0.5 + Math.random() * 0.6) + 'px';
+          let borderRadius = '2px';
+          let width = size;
+          let height = size * (0.5 + Math.random() * 0.6);
+
+          if (shape === 'circle') {
+            borderRadius = '50%';
+            width = size;
+            height = size;
+          } else if (shape === 'star') {
+            // ستاره با clip-path ساده
+            borderRadius = '0';
+            width = size;
+            height = size;
+            el.style.clipPath = 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)';
+            el.style.background = color;
+          }
+
+          el.style.width = width + 'px';
+          el.style.height = height + 'px';
           el.style.background = color;
           el.style.left = left + '%';
           el.style.top = '-10px';
-          el.style.borderRadius = shape;
+          el.style.borderRadius = borderRadius;
           el.style.animationDuration = duration + 's';
           el.style.animationDelay = delay + 's';
           el.style.transform = `rotate(${rotate}deg)`;
-          el.style.boxShadow = `0 0 15px ${color}`;
+          el.style.boxShadow = `0 0 20px ${color}40`;
 
           document.body.appendChild(el);
           setTimeout(() => { if (el.parentNode) el.remove(); }, (duration + delay) * 1000 + 300);
         }
       }
 
-      // ====== 4. رویدادها ======
-      const btn = document.getElementById('fireConfetti');
+      // ============================================================
+      // 3. دکمه با افکت موج (Ripple) و انفجار کانفتی
+      // ============================================================
+      const btn = document.getElementById('fireConfettiBtn');
 
-      // نمایش پیام با افکت fade-in
-      const msg = document.querySelector('.message');
-      setTimeout(() => {
-        msg.classList.add('show');
-      }, 300);
-
-      // کلیک دکمه
       btn.addEventListener('click', function(e) {
+        // ریپل
+        const rect = this.getBoundingClientRect();
+        const ripple = document.createElement('span');
+        ripple.className = 'ripple-effect';
+        const size = Math.max(rect.width, rect.height);
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+        ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+        this.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 800);
+
+        // انفجار کانفتی
+        createConfetti(150);
+        setTimeout(() => createConfetti(80), 300);
+        setTimeout(() => createConfetti(50), 700);
+
+        // جلوه‌ی نور روی دکمه
         this.style.transform = 'scale(0.92)';
         setTimeout(() => { this.style.transform = ''; }, 200);
 
-        createConfetti(130);
-        setTimeout(() => createConfetti(70), 300);
-        setTimeout(() => createConfetti(50), 700);
-
-        // جلوه‌ی نور روی پیام
-        msg.style.transition = 'box-shadow 0.3s, border-color 0.3s';
-        msg.style.boxShadow = '0 0 60px rgba(255,215,0,0.4)';
+        // هایلایت پیام
+        const msg = document.querySelector('.message');
+        msg.style.transition = 'box-shadow 0.4s, border-color 0.4s';
+        msg.style.boxShadow = '0 0 80px rgba(255,215,0,0.3)';
         msg.style.borderColor = '#ffd700';
         setTimeout(() => {
-          msg.style.boxShadow = 'inset 0 0 40px rgba(255,215,0,0.03)';
+          msg.style.boxShadow = 'inset 0 0 50px rgba(255,215,0,0.03)';
           msg.style.borderColor = '#f39c12';
-        }, 700);
+        }, 800);
       });
 
-      // کانفتی اولیه هنگام لود
+      // ============================================================
+      // 4. تایپ‌رایتر واقعی روی پیام (با cursor blink)
+      // ============================================================
+      (function typewriterEffect() {
+        const msgContainer = document.getElementById('typewriterMessage');
+        // متن اصلی با تگ‌ها (برای هایلایت)
+        const fullHTML = `
+          <span class="hl">❤️ عمو هادی عزیز ❤️</span><br />
+          بهترین‌ها را برایت آرزو میکنم.<br />
+          روزت پر از <span class="hl">شادی، عشق و موفقیت</span> 🌟
+        `;
+        // برای تایپ‌رایتر، بهتر است متن را به صورت رشته‌ای با تگ‌ها نگه داریم و به تدریج نمایش دهیم.
+        // اما تایپ‌رایتر با HTML پیچیده است. بنابراین یک روش ساده‌تر: 
+        // ابتدا یک متن ساده را تایپ می‌کنیم و بعد با innerHTML جایگزین می‌کنیم.
+        // اما برای جلوه‌ی زیبا، از یک افکت fade-in استفاده می‌کنیم که قبلاً با کلاس .loading-fade انجام شده.
+        // بنابراین نیازی به تایپ‌رایتر واقعی نیست، چون کارت با fade-in وارد می‌شود.
+        // اما برای نمایش cursor blink، آن را نگه می‌داریم و بعد از 3 ثانیه حذف می‌کنیم.
+        // همچنین می‌توانیم یک افکت تایپ روی خط اول انجام دهیم.
+
+        // ساده‌ترین: پیام کامل با fade-in نمایش داده می‌شود و cursor بعد از 3 ثانیه ناپدید می‌شود.
+        setTimeout(() => {
+          const cursor = msgContainer.querySelector('.cursor-blink');
+          if (cursor) cursor.style.display = 'none';
+        }, 3000);
+      })();
+
+      // ============================================================
+      // 5. کانفتی اولیه در شروع
+      // ============================================================
       window.addEventListener('load', function() {
-        setTimeout(() => createConfetti(50), 600);
-        setTimeout(() => createConfetti(30), 1300);
+        setTimeout(() => createConfetti(60), 800);
+        setTimeout(() => createConfetti(40), 1600);
+        setTimeout(() => createConfetti(30), 2400);
       });
 
-      // پارالاکس خفیف با حرکت موس (اختیاری)
+      // ============================================================
+      // 6. افکت پارالاکس با حرکت موس (شیشه‌ای)
+      // ============================================================
+      const card = document.querySelector('.card');
+      let isMouseOver = false;
+
       document.addEventListener('mousemove', function(e) {
-        const x = (e.clientX / window.innerWidth - 0.5) * 6;
-        const y = (e.clientY / window.innerHeight - 0.5) * 6;
-        const card = document.querySelector('.card');
-        card.style.transform = `translateY(-8px) rotate(${x * 0.3}deg) skewX(${x * 0.1}deg)`;
-        // reset after a while? بهتر است یک افکت ملایم داشته باشد.
-        // اما برای اینکه تداخل با floatCard نداشته باشد، از transition استفاده می‌کنیم.
-        card.style.transition = 'transform 0.15s ease-out';
+        const x = (e.clientX / window.innerWidth - 0.5) * 8;
+        const y = (e.clientY / window.innerHeight - 0.5) * 8;
+        card.style.transition = 'transform 0.15s cubic-bezier(0.23, 1, 0.32, 1)';
+        card.style.transform = `translateY(-10px) perspective(800px) rotateY(${x * 0.6}deg) rotateX(${-y * 0.6}deg) scale(1.01)`;
       });
 
-      // وقتی موس خارج می‌شود، به حالت عادی برگردد
       document.addEventListener('mouseleave', function() {
-        const card = document.querySelector('.card');
+        card.style.transition = 'transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)';
         card.style.transform = '';
-        card.style.transition = 'transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
+      });
+
+      // ============================================================
+      // 7. دکمه با افکت نور شناور (موس)
+      // ============================================================
+      btn.addEventListener('mousemove', function(e) {
+        const rect = this.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        this.style.setProperty('--mx', x + '%');
+        this.style.setProperty('--my', y + '%');
       });
 
     })();
   </script>
-
-  <!-- اضافه کردن کلاس show به پیام در CSS تعریف شده -->
-  <style>
-    /* پیام با افکت fade-in */
-    .message {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 1.2s cubic-bezier(0.23, 1, 0.32, 1), transform 1.2s cubic-bezier(0.23, 1, 0.32, 1);
-    }
-    .message.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    /* ریسپانسیو دکمه */
-    .btn-gift {
-      user-select: none;
-    }
-  </style>
 
 </body>
 </html>
